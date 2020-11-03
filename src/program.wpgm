@@ -1,4 +1,6 @@
 import wollok.game.*
+import extras.*
+import niveles.*
 
 program cruzarGame{
 	
@@ -6,6 +8,9 @@ program cruzarGame{
 	game.height(10)
 	game.width(10)
 	game.boardGround("calle.jpg")
+	
+	parte1.iniciar()
+	
 	game.start()
 
 	
