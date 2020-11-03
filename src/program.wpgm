@@ -1,5 +1,12 @@
 import wollok.game.*
 
-program ejemplo{
+program cruzarGame{
+	
+	game.title("Cruzar la calle")
+	game.height(10)
+	game.width(10)
+	game.boardGround("calle.jpg")
 	game.start()
+
+	
 }
