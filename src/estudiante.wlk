@@ -5,7 +5,9 @@ object estudiante {
 	
 	var property position = game.origin()
 	
-	method image() = "caminando.png" 
+	method image() {
+		return if (self.position() == auto.position()) "rip.png" else "caminando.png"
+	}
 	
 	
 }
