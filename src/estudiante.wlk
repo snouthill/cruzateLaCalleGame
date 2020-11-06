@@ -8,6 +8,4 @@ object estudiante {
 	method image() {
 		return if (self.position() == auto.position()) "rip.png" else "caminando.png"
 	}
-	
-	
 }

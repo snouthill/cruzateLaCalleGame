@@ -3,32 +3,32 @@ import estudiante.*
 
 object auto {
 	
-	var property persona = estudiante
-	
-	method position() = game.at(contador.sumar(), 0)
+	var property position = game.at(5, 2)
 
 	method image() = "auto.png"
 	
+	method avanzar() {
+		if(position.x() == 0){
+			position = game.at(9, position.y())
+		} else {
+		position = position.left(1)
+		}
+	} 
 }
 
 object bici {
+	
+	var property position = game.at(9, 4)
 
 	method image() = "bici.png"
-
-	method position() = game.at(7, 3)
-}
-
-object contador { //se mueve literalmente a la velocidad de la luz
 	
-	var property valor = 0
-	
-	method sumar(){
-		if (valor > 10){
-			valor = 0
-			return valor
+	method avanzar() {
+		if(position.x() == 0){
+			position = game.at(9, position.y())
 		} else {
-			valor = valor + 1
-			return valor
+		position = position.left(1)
 		}
-	}
+	} 
 }
+
+
