@@ -3,10 +3,10 @@ import extras.*
 
 object estudiante {
 	
-	var property position = game.origin()
+	var property position = game.at(7,1)
 	
 	method image() {
-		return if (self.position() == auto.position()) "rip.png" else "caminando.png"
+		return if (self.position() == auto.position()) "rip.png" else "personajeArriba.png"
 	}
 	
 	method chocadoPorAuto() {
@@ -20,7 +20,7 @@ object estudiante {
 	}
 	
 	method volverAlInicio(){
-		position = game.origin()
+		position = game.at(7,1)
 	}
 	
 	method estaEnLaFacu() {

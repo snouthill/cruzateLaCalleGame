@@ -5,9 +5,9 @@ import niveles.*
 program cruzarGame{
 	
 	game.title("Cruzar la calle")
-	game.height(10)
-	game.width(10)
-	game.boardGround("calle.jpg")
+	game.height(16)
+	game.width(15)
+	game.boardGround("calle.png")
 	
 	parte1.iniciar()
 	

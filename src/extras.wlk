@@ -36,12 +36,12 @@ object bici inherits Vehiculo(position = game.at(9, 2)) {
 
 object bondi inherits Vehiculo(position = game.at(3,6)) {
 	
-	override method image() = "bondi.png"
+	override method image() = "bondiAdelante.png"
 }
 
 object vidas {
 	
-	var property position = game.at(8,8)
+	var property position = game.at(14,14)
 	var property cantidad = 3
 	
 	method image() { return if (cantidad == 0) "sinVidas.png" else "vidas.png" }
