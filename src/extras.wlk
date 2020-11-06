@@ -1,34 +1,59 @@
 import wollok.game.*
 import estudiante.*
 
-object auto {
+class Vehiculo {
 	
-	var property position = game.at(5, 2)
-
-	method image() = "auto.png"
+	var property position
 	
-	method avanzar() {
+	method image()
+	
+	method avanzarIzquierda() {
 		if(position.x() == 0){
 			position = game.at(9, position.y())
 		} else {
 		position = position.left(1)
+		}
+	}
+	
+	method avanzarDerecha() {
+		if(position.x() == 9){
+			position = game.at(0, position.y())
+		} else {
+		position = position.right(1)
 		}
 	} 
 }
 
-object bici {
-	
-	var property position = game.at(9, 4)
+object auto inherits Vehiculo(position = game.at(5, 4)) {
 
-	method image() = "bici.png"
+	override method image() = "auto.png"	
+}
+
+object bici inherits Vehiculo(position = game.at(9, 2)) {
+
+	override method image() = "bici.png"	
+}
+
+object bondi inherits Vehiculo(position = game.at(3,6)) {
 	
-	method avanzar() {
-		if(position.x() == 0){
-			position = game.at(9, position.y())
-		} else {
-		position = position.left(1)
-		}
-	} 
+	override method image() = "bondi.png"
+}
+
+object vidas {
+	
+	var property position = game.at(8,8)
+	var property cantidad = 3
+	
+	method image() { return if (cantidad == 0) "sinVidas.png" else "vidas.png" }
+	
+	method perderVidas(cuantas) {if(cuantas > cantidad){cantidad = 0} else{cantidad = cantidad - cuantas}}
+}
+
+object utn {
+	
+	var property position = game.at(5,8)
+	
+	method image() = "universidad.png"
 }
 
 
