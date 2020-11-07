@@ -4,13 +4,17 @@ import extras.*
 object estudiante {
 	
 	var property position = game.at(7,1)
+	var property imagen = "personajeArriba.png"
 	
-	method image() {
-		return if (self.position() == auto.position()) "rip.png" else "personajeArriba.png"
-	}
+//	method image() {
+//		return if (self.position() == auto.position()) "rip.png" else "personajeArriba.png"
+//	}
 	
+	method image() = imagen
+
 	method chocadoPorAuto() {
 		self.volverAlInicio()
+		imagen = "personajeArriba.png"
 		vidas.perderVidas(1)
 	}
 	
