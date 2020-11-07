@@ -26,7 +26,13 @@ object config {
 	
 	method configurarColisiones(){
 		game.whenCollideDo(auto, { character => character.chocadoPorAuto() })
-		game.whenCollideDo(bondi, { character => character.chocadoPorBondi() })
-		
+		game.whenCollideDo(bondi, { character => character.chocadoPorBondi() })	
+	}
+	
+	method configurarTeclado(){
+		keyboard.left().onPressDo{estudiante.imagen("personajeIzquierda.png")}
+		keyboard.right().onPressDo{estudiante.imagen("personajeDerecha.png")}
+		keyboard.up().onPressDo{estudiante.imagen("personajeArriba.png")}
+		keyboard.down().onPressDo{estudiante.imagen("personajeAbajo.png")}
 	}
 }

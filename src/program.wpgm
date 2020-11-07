@@ -10,10 +10,7 @@ program cruzarGame{
 	game.width(15)
 	game.boardGround("calle.png")
 	
-	keyboard.left().onPressDo{estudiante.imagen("personajeIzquierda.png")}
-	keyboard.right().onPressDo{estudiante.imagen("personajeDerecha.png")}
-	keyboard.up().onPressDo{estudiante.imagen("personajeArriba.png")}
-	keyboard.down().onPressDo{estudiante.imagen("personajeAbajo.png")}
+	config.configurarTeclado()
 	
 	parte1.iniciar()
 	

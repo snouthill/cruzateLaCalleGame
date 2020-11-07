@@ -9,14 +9,14 @@ class Vehiculo {
 	
 	method avanzarIzquierda() {
 		if(position.x() == 0){
-			position = game.at(9, position.y())
+			position = game.at(14, position.y())
 		} else {
 		position = position.left(1)
 		}
 	}
 	
 	method avanzarDerecha() {
-		if(position.x() == 9){
+		if(position.x() == 14){
 			position = game.at(0, position.y())
 		} else {
 		position = position.right(1)
@@ -51,9 +51,9 @@ object vidas {
 
 object utn {
 	
-	var property position = game.at(5,8)
+	var property position = game.at(5,13)
 	
-	method image() = "universidad.png"
+	method image() = "utn.png"
 }
 
 
