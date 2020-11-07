@@ -13,6 +13,7 @@ object estudiante {
 	method image() = imagen
 
 	method chocadoPorAuto() {
+		game.say(self, "aaaaaa")
 		self.volverAlInicio()
 		imagen = "personajeArriba.png"
 		vidas.perderVidas(1)
