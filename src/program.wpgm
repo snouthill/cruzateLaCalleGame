@@ -12,7 +12,8 @@ program cruzarGame{
 	
 	config.configurarTeclado()
 	
-	parte1.iniciar()
+	objetosPrincipales.mostrar()
+	nivel1.iniciar()
 	
 	game.start()
 

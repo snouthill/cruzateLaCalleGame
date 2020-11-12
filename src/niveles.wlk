@@ -2,15 +2,21 @@ import extras.*
 import wollok.game.*
 import estudiante.*
 
-object parte1 {
-
-	method iniciar() {
+object objetosPrincipales {
+	
+	method mostrar() {
 		game.addVisual(auto)
 		game.addVisual(bici)
 		game.addVisual(vidas)
 		game.addVisual(bondi)
 		game.addVisual(utn)
 		game.addVisualCharacter(estudiante)
+	}
+}
+
+object nivel1 {
+
+	method iniciar() {
 		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
