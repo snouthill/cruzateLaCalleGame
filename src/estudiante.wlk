@@ -1,5 +1,6 @@
 import wollok.game.*
 import extras.*
+import niveles.*
 
 object estudiante {
 	
@@ -26,9 +27,16 @@ object estudiante {
 	
 	method volverAlInicio(){
 		position = game.at(7,1)
+		imagen = "personajeArriba.png"
 	}
 	
 	method estaEnLaFacu() {
 		return position == utn.position()
 	}
+	
+	method pasarDeNivel() {
+		self.volverAlInicio()
+		avanzar.pasarNivel()
+	}
+	
 }

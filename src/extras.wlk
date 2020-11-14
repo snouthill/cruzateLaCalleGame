@@ -56,4 +56,16 @@ object utn {
 	method image() = "utn.png"
 }
 
+object picante {
+	
+	var property nivelPicante = 0
+	
+	var property position = game.at(7,12)
+	
+	method image() = "rip.png" //aca le pongo cualquiera dsp lo cambiamos
+	
+	method subirNivelPicante() { nivelPicante = nivelPicante + 1 } //tambien habria q cambiar la imagen pero bueno cuando la tengamos
+	
+	
+}
 
