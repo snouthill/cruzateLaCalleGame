@@ -36,7 +36,7 @@ object estudiante {
 	
 	method pasarDeNivel() {
 		self.volverAlInicio()
-		avanzar.pasarNivel()
+		niveles.pasarNivel()
 	}
 	
 }

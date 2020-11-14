@@ -69,3 +69,10 @@ object picante {
 	
 }
 
+object vidaExtra {
+	
+	var property position = game.at (7,7)
+	
+	method image() = "vidaExtra.png"
+}
+
