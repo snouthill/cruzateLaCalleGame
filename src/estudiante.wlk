@@ -34,6 +34,11 @@ object estudiante {
 		return position == utn.position()
 	}
 	
+	method comerVida() {
+		vidas.ganarVidas(1)
+		game.removeVisual(vidaExtra)
+	}
+	
 	method pasarDeNivel() {
 		self.volverAlInicio()
 		niveles.pasarNivel()

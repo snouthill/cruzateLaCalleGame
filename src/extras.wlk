@@ -47,6 +47,7 @@ object vidas {
 	method image() { return if (cantidad == 0) "sinVidas.png" else "vidas.png" }
 	
 	method perderVidas(cuantas) {if(cuantas > cantidad){cantidad = 0} else{cantidad = cantidad - cuantas}}
+	method ganarVidas(cuantas) { cantidad = cantidad + cuantas }
 }
 
 object utn {

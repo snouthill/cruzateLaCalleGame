@@ -83,6 +83,7 @@ object config {
 		game.whenCollideDo(auto, { character => character.chocadoPorAuto()})
 		game.whenCollideDo(bondi, { character => character.chocadoPorBondi()})
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
+		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
 	}
 
 	method configurarTeclado() {
