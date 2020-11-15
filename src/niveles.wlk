@@ -13,6 +13,7 @@ object objetosPrincipales {
 		game.addVisual(picante)
 		game.addVisual(vidaExtra) // ahora la pongo acá pero podriamos ponerla recien en niveles dificiles
 		game.addVisualCharacter(estudiante)
+		config.configurarColisiones()
 	}
 
 }
@@ -32,13 +33,14 @@ object niveles {
 	method quedaUnNivel() = listaNiveles.size() == 1
 
 	method siguienteNivel() {
-		if (self.quedaUnNivel()) { 
+		if (!self.quedaUnNivel()) { 
 			listaNiveles.remove(self.primerNivel())
 		}
 	}
 
 	method pasarNivel() {
-		nivel2.iniciar() // por ahora solo pasa al nivel dos habria que pensar otra manera
+		self.siguienteNivel()
+		self.primerNivel().iniciar() 
 		picante.subirNivelPicante()
 	}
 
@@ -64,7 +66,6 @@ object nivel1 {
 		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
-		config.configurarColisiones()
 		game.say(estudiante, "ayudame a cruzar que llego tarde a pdep")
 	}
 
@@ -76,7 +77,6 @@ object nivel2 {
 		game.onTick(300, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(700, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(250, "bondi moving", { => bondi.avanzarDerecha()})
-		config.configurarColisiones()
 		game.say(estudiante, "ayudame a cruzar que llego tarde a pdep")
 	}
 
@@ -85,10 +85,9 @@ object nivel2 {
 object nivel5 {
 	
 	method iniciar() {
-		game.onTick(120, "car moving", { => auto.avanzarIzquierda()})
-		game.onTick(250, "bici moving", { => bici.avanzarIzquierda()})
+		game.onTick(50, "car moving", { => auto.avanzarIzquierda()})
+		game.onTick(50, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(100, "bondi moving", { => bondi.avanzarDerecha()})
-		config.configurarColisiones() //cambiar esto de lugar asi no repito tanto
 	}
 	
 }
