@@ -24,6 +24,8 @@ class Vehiculo {
 	} 
 }
 
+
+
 object auto inherits Vehiculo(position = game.at(5, 4)) {
 
 	override method image() = "auto.png"	
@@ -50,12 +52,21 @@ object vidas {
 	method ganarVidas(cuantas) { cantidad = cantidad + cuantas }
 }
 
+object inicio {
+	
+	var property position = game.at(0,0)
+	
+	method image() = "inicio.png"
+}
+
 object utn {
 	
 	var property position = game.at(5,13)
 	
 	method image() = "utn.png"
 }
+
+
 
 object picante {
 	

@@ -17,6 +17,8 @@ object objetosPrincipales {
 
 }
 
+
+
 object niveles {
 
 	var property listaNiveles = [ nivel1, nivel2, nivel5 ]
@@ -42,9 +44,24 @@ object niveles {
 
 }
 
+
+object musica inherits Sound(file = "bgmusic.mp3"){}
+
+object bienvenida{
+	method iniciar(){
+	game.addVisual(inicio)
+	keyboard.space().onPressDo{nivel1.iniciar()}
+		}
+	}
+
 object nivel1 {
 
 	method iniciar() {
+		musica.play()
+		musica.shouldLoop(true)
+		game.removeVisual(inicio)
+		objetosPrincipales.mostrar()
+		game.boardGround("calle.png")
 		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
