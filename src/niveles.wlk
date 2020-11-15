@@ -61,7 +61,6 @@ object nivel1 {
 		musica.shouldLoop(true)
 		game.removeVisual(inicio)
 		objetosPrincipales.mostrar()
-		game.boardGround("calle.png")
 		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
