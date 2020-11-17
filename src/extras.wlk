@@ -105,6 +105,8 @@ object vidaExtra {
 	method desaparecer(){
 		position = game.at (20,20)
 	}
+	method chocadoPorAuto(){}
+	method chocadoPorBondi(){}	
 }
 
 object numeroRandom {

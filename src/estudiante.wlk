@@ -28,7 +28,7 @@ object estudiante {
 
 	method chocadoPorAuto() {
 		if(vidas.cantidad()>1){
-		game.say(self, "una pierna rota, se cursa igual 8)")	
+		game.say(self, "una pierna rota, se cursa igual")	
 		self.volverAlInicio()
 		image = "personajeArriba.png"
 		vidas.perderVidas(1)
