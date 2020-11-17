@@ -9,6 +9,19 @@ object estudiante {
 	var property position = game.at(7,1)
 	var property image = orientacion.imagenDelPersonaje()
 	var property puntaje = 0
+	// Frases: (la ultima es poco probable que salga)
+	const fraseRandom = ["Dale que llego tarde :(", "Corre forest correee"]
+	const fraseChoque = ["F", "Una pierna rota, se cursa igual", "Aprende a manejar bobo"]
+	
+	method hablar(frase){
+		game.say(self, self.elegirFrase(frase))
+	}
+	
+	method elegirFrase(frase){
+		const numeroFrase = numeroRandom.generarEntre(0, frase.size()).truncate(0)
+		if (numeroFrase == frase.size()) return (frase.get(numeroFrase - 1))
+		else return frase.get(numeroFrase)
+	}
 	
 	method mover( posicion, unaOrientacion ) {
 	 	orientacion = unaOrientacion
@@ -28,7 +41,7 @@ object estudiante {
 
 	method chocadoPorAuto() {
 		if(vidas.cantidad()>1){
-		game.say(self, "una pierna rota, se cursa igual")	
+		self.hablar(fraseChoque)
 		self.volverAlInicio()
 		image = "personajeArriba.png"
 		vidas.perderVidas(1)
@@ -38,6 +51,7 @@ object estudiante {
 	method chocadoPorBondi() {
 		if(vidas.cantidad()>2){
 		self.volverAlInicio()
+		self.hablar(fraseChoque)
 		vidas.perderVidas(2)
 		}else config.gameOver()
 	}
@@ -60,6 +74,7 @@ object estudiante {
 	
 	method pasarDeNivel() {
 		puntaje += 1
+		self.hablar(fraseRandom)
 		scoreIzq.mostrar(puntaje)
 		scoreDer.mostrar(puntaje)
 		self.volverAlInicio()
@@ -87,3 +102,4 @@ object derecha {
 	method imagenDelPersonaje() = "personajeDerecha.png"
   	method posicionEnEsaDireccion() = estudiante.position().right(1)
 }
+

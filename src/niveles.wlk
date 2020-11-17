@@ -102,7 +102,7 @@ object nivel1 {
 		game.onTick(400, "car moving", { => autoDoble2.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
-		game.say(estudiante, "ayudame a cruzar que llego tarde a pdep")
+		game.say(estudiante, "Dale que llego tarde a pdep")
 	}
 
 }
@@ -113,7 +113,7 @@ object nivel2 {
 		game.onTick(300, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(700, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(250, "bondi moving", { => bondi.avanzarDerecha()})
-		game.say(estudiante, "ayudame a cruzar que llego tarde a pdep")
+		
 	}
 
 }
