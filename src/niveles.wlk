@@ -145,6 +145,8 @@ object config {
 		musicaEnding.play()
 		musicaEnding.shouldLoop(false)
 		game.addVisual(final)
+		scoreIzq.scoreFinal()
+		scoreDer.scoreFinal()
 		keyboard.f().onPressDo{game.stop()}
 			
 	}

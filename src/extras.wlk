@@ -110,8 +110,12 @@ class MuroInvisible {
 ////// Score //////
 
 object scoreIzq{
-	const property position = game.at(3,17)
+	var property position = game.at(3,17)
 	var property image = "vacio.png"
+	method scoreFinal(){
+	position =  game.at(9,4)
+	game.addVisual(self)
+	}
 	method mostrar(puntaje){
 	if(puntaje>=10){ image = numberConverter.getNumberImage((puntaje/10).truncate(0)) }
 		else {image = "vacio.png"}
@@ -119,8 +123,12 @@ object scoreIzq{
 }
 
 object scoreDer{
-	const property position = game.at(4,17)
+	var property position = game.at(4,17)
 	var property image = numberConverter.getNumberImage(0)
+	method scoreFinal(){
+	position =  game.at(10,4)
+	game.addVisual(self)
+	}
 	method mostrar(puntaje){
 		image = numberConverter.getNumberImage(puntaje % 10) 
 	}	

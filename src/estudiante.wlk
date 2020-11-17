@@ -36,7 +36,7 @@ object estudiante {
 	}
 	
 	method chocadoPorBondi() {
-		if(vidas.cantidad()>1){
+		if(vidas.cantidad()>2){
 		self.volverAlInicio()
 		vidas.perderVidas(2)
 		}else config.gameOver()
