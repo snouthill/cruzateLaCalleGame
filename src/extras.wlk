@@ -7,6 +7,7 @@ class Vehiculo {
 	
 	method image()
 	method esAtravesable() = true
+	method comerVida(){}
 	method avanzarIzquierda() {
 		if(position.x() == 0){
 			position = game.at(14, position.y())
@@ -94,11 +95,20 @@ object picante {
 }
 
 object vidaExtra {
-	
-	var property position = game.at (7,7)
-	
+	var property position = game.at (20,20)
 	method image() = "vidaExtra.png"
 	method esAtravesable() = true
+	method spawn(){
+		position = game.at(numeroRandom.generarEntre(0,14),numeroRandom.generarEntre(2,7))
+		game.schedule(3000, { => self.desaparecer() })
+	}
+	method desaparecer(){
+		position = game.at (20,20)
+	}
+}
+
+object numeroRandom {
+	method generarEntre(numero1, numero2) = numero1.randomUpTo(numero2)
 }
 
 class MuroInvisible {

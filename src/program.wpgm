@@ -7,7 +7,7 @@ import estudiante.*
 
 program cruzarGame{
 	
-	game.title("Cruzar la calle")
+	game.title("Cruzate la calle")
 	game.height(18)
 	game.width(15)
 	game.boardGround("calle.png")

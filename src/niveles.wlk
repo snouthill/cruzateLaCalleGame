@@ -81,7 +81,6 @@ object musicaEnding inherits Sound(file = "endmusic.mp3"){}
 
 object bienvenida{
 	method iniciar(){
-	if (musicaEnding.played()) musicaEnding.stop()
 	game.addVisual(inicio)
 	keyboard.space().onPressDo{nivel1.iniciar()}
 		}
@@ -94,6 +93,8 @@ object nivel1 {
 		musica.shouldLoop(true)
 		game.removeVisual(inicio)
 		objetosPrincipales.mostrar()
+		// modificar tiempo de vida extra aca	
+		game.onTick(10000, "mostrarVidaExtra", { => vidaExtra.spawn()})
 		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})

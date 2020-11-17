@@ -54,7 +54,7 @@ object estudiante {
 	method comerVida() {
 		if (vidas.cantidad() < vidas.maximo()){
 		vidas.ganarVidas(1)
-		game.removeVisual(vidaExtra)
+		vidaExtra.desaparecer()
 		}
 	}
 	
