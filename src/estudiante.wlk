@@ -5,26 +5,30 @@ import niveles.*
 
 object estudiante {
 	
+	var orientacion = arriba
 	var property position = game.at(7,1)
-	var property imagen = "personajeArriba.png"
+	var property image = orientacion.imagenDelPersonaje()
 	
-	method image() = imagen
-
-	 method mover( posicion, unaOrientacion ) { 
-    if( self.puedeMoverAl( unaOrientacion )) { 
-      position = posicion
-    } 
-  }
+	method mover( posicion, unaOrientacion ) {
+	 	orientacion = unaOrientacion
+	 	self.actualizarImagen(unaOrientacion.imagenDelPersonaje()) 
+	 	if( self.puedeMoverAl( unaOrientacion )) { 
+      		position = posicion
+  		  } 
+  	}
 	method puedeMoverAl( unaOrientacion ) {
-  return 
-    game.getObjectsIn( unaOrientacion.posicionEnEsaDireccion() ).all { unObj => unObj.esAtravesable() }
-}
+  		return game.getObjectsIn( unaOrientacion.posicionEnEsaDireccion() ).all { unObj => unObj.esAtravesable() }
+	}
+	
+	method actualizarImagen(unaOrientacion){
+	image = unaOrientacion
+	}
 
 
 	method chocadoPorAuto() {
 		game.say(self, "aaaaaa")	
 		self.volverAlInicio()
-		imagen = "personajeArriba.png"
+		image = "personajeArriba.png"
 		vidas.perderVidas(1)
 	}
 	
@@ -35,7 +39,7 @@ object estudiante {
 	
 	method volverAlInicio(){
 		position = game.at(7,1)
-		imagen = "personajeArriba.png"
+		image = "personajeArriba.png"
 	}
 	
 	method estaEnLaFacu() {
@@ -55,17 +59,21 @@ object estudiante {
 }
 
 object arriba {
-  method posicionEnEsaDireccion() = estudiante.position().up(1)
+  	method imagenDelPersonaje() = "personajeArriba.png"
+	method posicionEnEsaDireccion() = estudiante.position().up(1)
 }
 
 object abajo {
-  method posicionEnEsaDireccion() = estudiante.position().down(1)
+	method imagenDelPersonaje() = "personajeAbajo.png"
+  	method posicionEnEsaDireccion() = estudiante.position().down(1)
 }
 
 object izquierda {
-  method posicionEnEsaDireccion() = estudiante.position().left(1)
+	method imagenDelPersonaje() = "personajeIzquierda.png"
+ 	method posicionEnEsaDireccion() = estudiante.position().left(1)
 }
 
 object derecha {
-  method posicionEnEsaDireccion() = estudiante.position().right(1)
+	method imagenDelPersonaje() = "personajeDerecha.png"
+  	method posicionEnEsaDireccion() = estudiante.position().right(1)
 }

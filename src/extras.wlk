@@ -6,7 +6,7 @@ class Vehiculo {
 	var property position
 	
 	method image()
-	
+	method esAtravesable() = true
 	method avanzarIzquierda() {
 		if(position.x() == 0){
 			position = game.at(14, position.y())
