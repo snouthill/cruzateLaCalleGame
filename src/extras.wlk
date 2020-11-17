@@ -56,13 +56,19 @@ object vidas {
 	
 	method perderVidas(cuantas) {if(cuantas > cantidad){cantidad = 0} else{cantidad = cantidad - cuantas}}
 	method ganarVidas(cuantas) { if (cantidad<maximo) cantidad = cantidad + cuantas }
+	method vidasAlMax(){
+		cantidad = maximo
+	}
 }
 
 object inicio {
-	
 	var property position = game.at(0,0)
-	
 	method image() = "inicio.png"
+}
+
+object final {
+	var property position = game.at(0,0)
+	method image() = "final.png"
 }
 
 object utn {

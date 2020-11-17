@@ -27,15 +27,19 @@ object estudiante {
 
 
 	method chocadoPorAuto() {
-		game.say(self, "aaaaaa")	
+		if(vidas.cantidad()>1){
+		game.say(self, "una pierna rota, se cursa igual 8)")	
 		self.volverAlInicio()
 		image = "personajeArriba.png"
 		vidas.perderVidas(1)
+		}else config.gameOver()
 	}
 	
 	method chocadoPorBondi() {
+		if(vidas.cantidad()>1){
 		self.volverAlInicio()
 		vidas.perderVidas(2)
+		}else config.gameOver()
 	}
 	
 	method volverAlInicio(){

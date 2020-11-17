@@ -77,9 +77,11 @@ object niveles {
 
 
 object musica inherits Sound(file = "bgmusic.mp3"){}
+object musicaEnding inherits Sound(file = "endmusic.mp3"){}
 
 object bienvenida{
 	method iniciar(){
+	if (musicaEnding.played()) musicaEnding.stop()
 	game.addVisual(inicio)
 	keyboard.space().onPressDo{nivel1.iniciar()}
 		}
@@ -137,5 +139,14 @@ object config {
 		keyboard.down().onPressDo{ estudiante.mover(estudiante.position().down(1), abajo)}
 	}
 
+	method gameOver(){
+		musica.stop()
+		game.clear()
+		musicaEnding.play()
+		musicaEnding.shouldLoop(false)
+		game.addVisual(final)
+		keyboard.f().onPressDo{game.stop()}
+			
+	}
 }
 
