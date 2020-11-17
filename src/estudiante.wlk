@@ -8,11 +8,18 @@ object estudiante {
 	var property position = game.at(7,1)
 	var property imagen = "personajeArriba.png"
 	
-//	method image() {
-//		return if (self.position() == auto.position()) "rip.png" else "personajeArriba.png"
-//	}
-	
 	method image() = imagen
+
+	 method mover( posicion, unaOrientacion ) { 
+    if( self.puedeMoverAl( unaOrientacion )) { 
+      position = posicion
+    } 
+  }
+	method puedeMoverAl( unaOrientacion ) {
+  return 
+    game.getObjectsIn( unaOrientacion.posicionEnEsaDireccion() ).all { unObj => unObj.esAtravesable() }
+}
+
 
 	method chocadoPorAuto() {
 		game.say(self, "aaaaaa")	
@@ -45,4 +52,20 @@ object estudiante {
 		niveles.pasarNivel()
 	}
 	
+}
+
+object arriba {
+  method posicionEnEsaDireccion() = estudiante.position().up(1)
+}
+
+object abajo {
+  method posicionEnEsaDireccion() = estudiante.position().down(1)
+}
+
+object izquierda {
+  method posicionEnEsaDireccion() = estudiante.position().left(1)
+}
+
+object derecha {
+  method posicionEnEsaDireccion() = estudiante.position().right(1)
 }

@@ -43,7 +43,7 @@ object bondi inherits Vehiculo(position = game.at(3,6)) {
 
 object vidas {
 	
-	var property position = game.at(14,14)
+	var property position = game.at(14,15)
 	var property cantidad = 3
 	
 	method image() { return if (cantidad == 0) "sinVidas.png" else "vidas.png" }
@@ -62,8 +62,8 @@ object inicio {
 object utn {
 	
 	var property position = game.at(7,12)
-	
 	method image() = "vacio.png"
+	method esAtravesable() = true
 }
 
 
@@ -88,3 +88,8 @@ object vidaExtra {
 	method image() = "vidaExtra.png"
 }
 
+class MuroInvisible {
+	var property position
+  	method image() = "vacio.png"
+  	method esAtravesable() = false
+}
