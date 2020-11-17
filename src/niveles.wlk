@@ -6,6 +6,8 @@ object objetosPrincipales {
 
 	method mostrar() {
 		game.addVisual(auto)
+		game.addVisual(autoDoble1)
+		game.addVisual(autoDoble2)
 		game.addVisual(bici)
 		game.addVisual(vidas)
 		game.addVisual(bondi)
@@ -96,6 +98,8 @@ object nivel1 {
 		// modificar tiempo de vida extra aca	
 		game.onTick(10000, "mostrarVidaExtra", { => vidaExtra.spawn()})
 		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
+		game.onTick(400, "car moving", { => autoDoble1.avanzarIzquierda()})
+		game.onTick(400, "car moving", { => autoDoble2.avanzarIzquierda()})
 		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
 		game.say(estudiante, "ayudame a cruzar que llego tarde a pdep")
@@ -128,9 +132,13 @@ object config {
 
 	method configurarColisiones() {
 		game.whenCollideDo(auto, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoDoble1, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoDoble2, { character => character.chocadoPorAuto()})
 		game.whenCollideDo(bondi, { character => character.chocadoPorBondi()})
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
 		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
+		game.whenCollideDo(bici, { character => character.volverAlInicio()})
+		
 	}
 
 	method configurarTeclado() {

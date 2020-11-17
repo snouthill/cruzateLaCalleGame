@@ -32,6 +32,15 @@ object auto inherits Vehiculo(position = game.at(5, 4)) {
 	override method image() = "auto.png"	
 }
 
+object autoDoble1 inherits Vehiculo(position = game.at(5, 7)) {
+
+	override method image() = "auto.png"	
+}
+object autoDoble2 inherits Vehiculo(position = game.at(6, 7)) {
+
+	override method image() = "auto.png"	
+}
+
 object bici inherits Vehiculo(position = game.at(9, 2)) {
 
 	override method image() = "bici.png"	
@@ -106,7 +115,8 @@ object vidaExtra {
 		position = game.at (20,20)
 	}
 	method chocadoPorAuto(){}
-	method chocadoPorBondi(){}	
+	method chocadoPorBondi(){}
+	method volverAlInicio(){}
 }
 
 object numeroRandom {
