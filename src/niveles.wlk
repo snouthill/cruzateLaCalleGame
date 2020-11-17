@@ -53,7 +53,7 @@ object objetosPrincipales {
 
 object niveles {
 
-	var property listaNiveles = [ nivel1, nivel2, nivel5 ]
+	var property listaNiveles = [ nivel1, nivel2, nivel3, nivel4, nivel5 ]
 
 	method iniciar() {
 		self.primerNivel().iniciar()
@@ -88,6 +88,26 @@ object bienvenida{
 		}
 	}
 
+object objetosMovimiento {
+	
+	var property velocidadAuto = 500
+	var property velocidadBici = 400
+	var property velocidadBondi = 700
+	
+	method comenzar() {
+		game.onTick(velocidadAuto, "car moving", { => auto.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
+		game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})
+		game.onTick(velocidadBondi, "bondi moving", { => bondi.avanzarDerecha()})	
+	}
+	method aumentarVelocidad() {
+		velocidadAuto = velocidadAuto - 70
+		velocidadBici = velocidadBici - 70
+		velocidadBondi = velocidadBondi - 70
+	}
+}
+
 object nivel1 {
 
 	method iniciar() {
@@ -95,13 +115,8 @@ object nivel1 {
 		musica.shouldLoop(true)
 		game.removeVisual(inicio)
 		objetosPrincipales.mostrar()
-		// modificar tiempo de vida extra aca	
+		objetosMovimiento.comenzar()	
 		game.onTick(10000, "mostrarVidaExtra", { => vidaExtra.spawn()})
-		game.onTick(500, "car moving", { => auto.avanzarIzquierda()})
-		game.onTick(400, "car moving", { => autoDoble1.avanzarIzquierda()})
-		game.onTick(400, "car moving", { => autoDoble2.avanzarIzquierda()})
-		game.onTick(1500, "bici moving", { => bici.avanzarIzquierda()})
-		game.onTick(300, "bondi moving", { => bondi.avanzarDerecha()})
 		game.say(estudiante, "Dale que llego tarde a cursar :(")
 	}
 
@@ -110,10 +125,27 @@ object nivel1 {
 object nivel2 {
 
 	method iniciar() {
-		game.onTick(300, "car moving", { => auto.avanzarIzquierda()})
-		game.onTick(700, "bici moving", { => bici.avanzarIzquierda()})
-		game.onTick(250, "bondi moving", { => bondi.avanzarDerecha()})
+		objetosMovimiento.aumentarVelocidad()
+		objetosMovimiento.comenzar()
 		
+	}
+
+}
+
+object nivel3 {
+
+	method iniciar() {
+		objetosMovimiento.aumentarVelocidad()
+		objetosMovimiento.comenzar()
+	}
+
+}
+
+object nivel4 {
+
+	method iniciar() {
+		objetosMovimiento.aumentarVelocidad()
+		objetosMovimiento.comenzar()
 	}
 
 }
@@ -121,9 +153,8 @@ object nivel2 {
 object nivel5 {
 	
 	method iniciar() {
-		game.onTick(50, "car moving", { => auto.avanzarIzquierda()})
-		game.onTick(50, "bici moving", { => bici.avanzarIzquierda()})
-		game.onTick(100, "bondi moving", { => bondi.avanzarDerecha()})
+		objetosMovimiento.aumentarVelocidad()
+		objetosMovimiento.comenzar()
 	}
 	
 }
