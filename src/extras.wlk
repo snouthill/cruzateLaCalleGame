@@ -43,13 +43,19 @@ object bondi inherits Vehiculo(position = game.at(3,6)) {
 
 object vidas {
 	
-	var property position = game.at(14,15)
+	var property position = game.at(12,17)
 	var property cantidad = 3
+	var property maximo = 3
 	
-	method image() { return if (cantidad == 0) "sinVidas.png" else "vidas.png" }
+	
+	method image() {  return if (cantidad == 1) "vida1.png"
+						else if (cantidad == 2) "vida2.png"
+						else if (cantidad == 3) "vida3.png"
+						else "vacio.png"
+	}
 	
 	method perderVidas(cuantas) {if(cuantas > cantidad){cantidad = 0} else{cantidad = cantidad - cuantas}}
-	method ganarVidas(cuantas) { cantidad = cantidad + cuantas }
+	method ganarVidas(cuantas) { if (cantidad<maximo) cantidad = cantidad + cuantas }
 }
 
 object inicio {
@@ -86,6 +92,7 @@ object vidaExtra {
 	var property position = game.at (7,7)
 	
 	method image() = "vidaExtra.png"
+	method esAtravesable() = true
 }
 
 class MuroInvisible {
