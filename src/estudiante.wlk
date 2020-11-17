@@ -9,20 +9,13 @@ object estudiante {
 	var property position = game.at(7,1)
 	var property image = orientacion.imagenDelPersonaje()
 	var property puntaje = 0
-	// Frases: (la ultima es poco probable que salga)
-	const fraseRandom = ["Dale que llego tarde :(", "Corre forest correee"]
-	const fraseChoque = ["F", "Una pierna rota, se cursa igual", "Aprende a manejar bobo"]
+	const fraseRandom = ["Dale que llego tarde :(", "Corre forest correee", "Kachow"]
+	const fraseChoque = ["F", "Una pierna rota, se cursa igual", "Aprende a manejar pibe", "Venia pisteando como un campeon..."]
 	
 	method hablar(frase){
-		game.say(self, self.elegirFrase(frase))
+		game.say(self, frase.anyOne().toString())
 	}
-	
-	method elegirFrase(frase){
-		const numeroFrase = numeroRandom.generarEntre(0, frase.size()).truncate(0)
-		if (numeroFrase == frase.size()) return (frase.get(numeroFrase - 1))
-		else return frase.get(numeroFrase)
-	}
-	
+
 	method mover( posicion, unaOrientacion ) {
 	 	orientacion = unaOrientacion
 	 	self.actualizarImagen(unaOrientacion.imagenDelPersonaje()) 
