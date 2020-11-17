@@ -72,12 +72,12 @@ object picante {
 	
 	var property nivelPicante = 0
 	
-	var property position = game.at(8,12)
+	var property position = game.at(2,18)
 	
 	method image() = "vacio.png" //aca le pongo cualquiera dsp lo cambiamos
 	
 	method subirNivelPicante() { nivelPicante = nivelPicante + 1 } //tambien habria q cambiar la imagen pero bueno cuando la tengamos
-	
+	method esAtravesable() = true
 	
 }
 
@@ -93,3 +93,29 @@ class MuroInvisible {
   	method image() = "vacio.png"
   	method esAtravesable() = false
 }
+
+////// Score //////
+
+object scoreIzq{
+	const property position = game.at(3,17)
+	var property image = "vacio.png"
+	method mostrar(puntaje){
+	if(puntaje>=10){ image = numberConverter.getNumberImage((puntaje/10).truncate(0)) }
+		else {image = "vacio.png"}
+	}
+}
+
+object scoreDer{
+	const property position = game.at(4,17)
+	var property image = numberConverter.getNumberImage(0)
+	method mostrar(puntaje){
+		image = numberConverter.getNumberImage(puntaje % 10) 
+	}	
+}
+
+object numberConverter{
+	method getNumberImage(number){
+    	return ( "nro" + number + ".png")
+}
+}
+

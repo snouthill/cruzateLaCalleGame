@@ -13,6 +13,8 @@ object objetosPrincipales {
 		game.addVisual(picante)
 		game.addVisual(vidaExtra) // ahora la pongo acá pero podriamos ponerla recien en niveles dificiles
 		game.addVisual(estudiante)
+		game.addVisual(scoreIzq)
+		game.addVisual(scoreDer)
 		self.generarMuros()
 		
 		
@@ -45,11 +47,7 @@ object objetosPrincipales {
 	game.addVisual(new MuroInvisible(position = game.at(13,14))) 
 	game.addVisual(new MuroInvisible(position = game.at(14,14))) 
 }	
-	
-
 }
-
-
 
 object niveles {
 

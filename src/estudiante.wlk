@@ -8,6 +8,7 @@ object estudiante {
 	var orientacion = arriba
 	var property position = game.at(7,1)
 	var property image = orientacion.imagenDelPersonaje()
+	var property puntaje = 0
 	
 	method mover( posicion, unaOrientacion ) {
 	 	orientacion = unaOrientacion
@@ -52,6 +53,9 @@ object estudiante {
 	}
 	
 	method pasarDeNivel() {
+		puntaje += 1
+		scoreIzq.mostrar(puntaje)
+		scoreDer.mostrar(puntaje)
 		self.volverAlInicio()
 		niveles.pasarNivel()
 	}
