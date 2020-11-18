@@ -104,9 +104,14 @@ object objetosMovimiento {
 		game.onTick(velocidadBondi, "bondi moving", { => bondi2.avanzarDerecha()})	
 	}
 	method aumentarVelocidad() {
-		velocidadAuto = velocidadAuto - 70
-		velocidadBici = velocidadBici - 70
-		velocidadBondi = velocidadBondi - 70
+		velocidadAuto = velocidadAuto - 50
+		velocidadBici = velocidadBici - 50
+		velocidadBondi = velocidadBondi - 50
+	}
+	method aumentarVelocidadLento() {
+		velocidadAuto = velocidadAuto - 5
+		velocidadBici = velocidadBici - 5
+		velocidadBondi = velocidadBondi - 5
 	}
 }
 
@@ -157,6 +162,7 @@ object nivel4 {
 object nivel5 {
 	
 	method iniciar() {
+		objetosMovimiento.aumentarVelocidadLento()
 		objetosMovimiento.comenzar()
 	}
 	
@@ -181,6 +187,7 @@ object config {
 		keyboard.right().onPressDo{ estudiante.mover(estudiante.position().right(1), derecha)}
 		keyboard.up().onPressDo{ estudiante.mover(estudiante.position().up(1), arriba)}
 		keyboard.down().onPressDo{ estudiante.mover(estudiante.position().down(1), abajo)}
+
 	}
 
 	method gameOver(){
