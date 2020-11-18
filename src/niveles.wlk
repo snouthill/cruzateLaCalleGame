@@ -8,7 +8,12 @@ object objetosPrincipales {
 		game.addVisual(auto)
 		game.addVisual(autoDoble1)
 		game.addVisual(autoDoble2)
-		game.addVisual(bici)
+		game.addVisual(biciDerecha1)
+		game.addVisual(biciDerecha2)
+		game.addVisual(biciDerecha3)
+		game.addVisual(biciIzquierda1)
+		game.addVisual(biciIzquierda2)
+		game.addVisual(biciIzquierda3)
 		game.addVisual(vidas)
 		game.addVisual(bondi)
 		game.addVisual(bondi2)
@@ -91,22 +96,27 @@ object bienvenida{
 
 object objetosMovimiento {
 	
-	var property velocidadAuto = 400
+	var property velocidadAuto = 900
 	var property velocidadBici = 500
-	var property velocidadBondi = 400
+	var property velocidadBondi = 900
 	
 	method comenzar() {
 		game.onTick(velocidadAuto, "car moving", { => auto.avanzarIzquierda()})
 		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
 		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
-		game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})
+		game.onTick(velocidadBici, "biciDerecha1 moving", { => biciDerecha1.avanzarDerecha()})
+		game.onTick(velocidadBici, "biciDerecha2 moving", { => biciDerecha2.avanzarDerecha()})
+		game.onTick(velocidadBici, "biciDerecha3 moving", { => biciDerecha3.avanzarDerecha()})
+		game.onTick(velocidadBici, "biciIzquierda1 moving", { => biciIzquierda1.avanzarIzquierda()})
+		game.onTick(velocidadBici, "biciIzquierda2 moving", { => biciIzquierda2.avanzarIzquierda()})
+		game.onTick(velocidadBici, "biciIzquierda3 moving", { => biciIzquierda3.avanzarIzquierda()})
 		game.onTick(velocidadBondi, "bondi moving", { => bondi.avanzarDerecha()})	
 		game.onTick(velocidadBondi, "bondi moving", { => bondi2.avanzarDerecha()})	
 	}
 	method aumentarVelocidad() {
-		velocidadAuto = velocidadAuto - 50
-		velocidadBici = velocidadBici - 50
-		velocidadBondi = velocidadBondi - 50
+		velocidadAuto = velocidadAuto - 20
+		velocidadBici = velocidadBici - 20
+		velocidadBondi = velocidadBondi - 20
 	}
 	method aumentarVelocidadLento() {
 		velocidadAuto = velocidadAuto - 5
@@ -178,8 +188,9 @@ object config {
 		game.whenCollideDo(bondi2, { character => character.chocadoPorBondi()})
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
 		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
-		game.whenCollideDo(bici, { character => character.volverAlInicio()})
-		
+		game.whenCollideDo(biciDerecha1, { character => character.volverAlInicio()})
+		game.whenCollideDo(biciDerecha2, { character => character.volverAlInicio()})
+		game.whenCollideDo(biciDerecha3, { character => character.volverAlInicio()})
 	}
 
 	method configurarTeclado() {

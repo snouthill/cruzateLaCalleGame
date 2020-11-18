@@ -41,9 +41,28 @@ object autoDoble2 inherits Vehiculo(position = game.at(6, 7)) {
 	override method image() = "auto.png"	
 }
 
-object bici inherits Vehiculo(position = game.at(9, 2)) {
+object biciDerecha1 inherits Vehiculo(position = game.at(0, 9)) {
+	override method image() = "bici1r.png"	
+}
 
-	override method image() = "bici.png"	
+object biciDerecha2 inherits Vehiculo(position = game.at(3, 9)) {
+	override method image() = "bici2r.png"	
+}
+
+object biciDerecha3 inherits Vehiculo(position = game.at(7, 9)) {
+	override method image() = "bici3r.png"	
+}
+
+object biciIzquierda1 inherits Vehiculo(position = game.at(1, 10)) {
+	override method image() = "bici1l.png"	
+}
+
+object biciIzquierda2 inherits Vehiculo(position = game.at(5, 10)) {
+	override method image() = "bici2l.png"	
+}
+
+object biciIzquierda3 inherits Vehiculo(position = game.at(11, 10)) {
+	override method image() = "bici3l.png"	
 }
 
 object bondi inherits Vehiculo(position = game.at(3,6)) {
