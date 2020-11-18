@@ -1,11 +1,12 @@
 import wollok.game.*
 import estudiante.*
+import niveles.*
 
 class Vehiculo {
-	
+	var property imagen
 	var property position
 	
-	method image()
+	method image() = imagen
 	method esAtravesable() = true
 	method comerVida(){}
 	method avanzarIzquierda() {
@@ -25,89 +26,88 @@ class Vehiculo {
 	} 
 }
 
-
-
-object biciDerecha1 inherits Vehiculo(position = game.at(0, 9)) {
-	override method image() = "bici1r.png"	
-}
-
-object biciDerecha2 inherits Vehiculo(position = game.at(3, 9)) {
-	override method image() = "bici2r.png"	
-}
-
-object biciDerecha3 inherits Vehiculo(position = game.at(7, 9)) {
-	override method image() = "bici3r.png"	
-}
-
-object biciIzquierda1 inherits Vehiculo(position = game.at(1, 10)) {
-	override method image() = "bici1l.png"	
-}
-
-object biciIzquierda2 inherits Vehiculo(position = game.at(5, 10)) {
-	override method image() = "bici2l.png"	
-}
-
-object biciIzquierda3 inherits Vehiculo(position = game.at(11, 10)) {
-	override method image() = "bici3l.png"	
-}
-
-// El codigo que sigue es totalmente horrendo pero son las 5am y no llego aaaa
-
-object autoDerecha1 inherits Vehiculo(position = game.at(3, 2)) {
-	override method image() = "auto1r.png"	
-}
-
-object autoDerecha2 inherits Vehiculo(position = game.at(10, 2)) {
-	override method image() = "auto2r.png"	
-}
-
-object autoDerecha3 inherits Vehiculo(position = game.at(1, 4)) {
-	override method image() = "auto4r.png"	
-}
-
-object bondiDerecha4 inherits Vehiculo(position = game.at(8, 4)) {
-	override method image() = "bondi1r.png"	
-}
-
-object bondiDerecha5 inherits Vehiculo(position = game.at(2, 6)) {
-	override method image() = "bondi1r.png"	
-}
-
-object autoDerecha6 inherits Vehiculo(position = game.at(9, 6)) {
-	override method image() = "auto3r.png"	
-}
-
-object autoDerecha7 inherits Vehiculo(position = game.at(13, 6)) {
-	override method image() = "auto1r.png"	
-}
-
-object autoIzquierda1 inherits Vehiculo(position = game.at(0, 3)) {
-	override method image() = "auto2l.png"	
-}
-
-object autoIzquierda2 inherits Vehiculo(position = game.at(7, 3)) {
-	override method image() = "auto3l.png"	
-}
-
-object bondiIzquierda3 inherits Vehiculo(position = game.at(11, 3)) {
-	override method image() = "bondi1l.png"	
-}
-
-object autoIzquierda4 inherits Vehiculo(position = game.at(4, 5)) {
-	override method image() = "auto2l.png"	
-}
-
-object bondiIzquierda5 inherits Vehiculo(position = game.at(10, 5)) {
-	override method image() = "bondi1l.png"	
-}
-
-object autoIzquierda6 inherits Vehiculo(position = game.at(14, 7)) {
-	override method image() = "auto2l.png"	
-}
-
-object autoIzquierda7 inherits Vehiculo(position = game.at(5, 7)) {
-	override method image() = "auto4l.png"	
-}
+//
+//object biciDerecha1 inherits Vehiculo(position = game.at(0, 9)) {
+//	override method image() = "bici1r.png"	
+//}
+//
+//object biciDerecha2 inherits Vehiculo(position = game.at(3, 9)) {
+//	override method image() = "bici2r.png"	
+//}
+//
+//object biciDerecha3 inherits Vehiculo(position = game.at(7, 9)) {
+//	override method image() = "bici3r.png"	
+//}
+//
+//object biciIzquierda1 inherits Vehiculo(position = game.at(1, 10)) {
+//	override method image() = "bici1l.png"	
+//}
+//
+//object biciIzquierda2 inherits Vehiculo(position = game.at(5, 10)) {
+//	override method image() = "bici2l.png"	
+//}
+//
+//object biciIzquierda3 inherits Vehiculo(position = game.at(11, 10)) {
+//	override method image() = "bici3l.png"	
+//}
+//
+//// El codigo que sigue es totalmente horrendo pero son las 5am y no llego aaaa
+//
+//object autoDerecha1 inherits Vehiculo(position = game.at(3, 2)) {
+//	override method image() = "auto1r.png"	
+//}
+//
+//object autoDerecha2 inherits Vehiculo(position = game.at(10, 2)) {
+//	override method image() = "auto2r.png"	
+//}
+//
+//object autoDerecha3 inherits Vehiculo(position = game.at(1, 4)) {
+//	override method image() = "auto4r.png"	
+//}
+//
+//object bondiDerecha4 inherits Vehiculo(position = game.at(8, 4)) {
+//	override method image() = "bondi1r.png"	
+//}
+//
+//object bondiDerecha5 inherits Vehiculo(position = game.at(2, 6)) {
+//	override method image() = "bondi1r.png"	
+//}
+//
+//object autoDerecha6 inherits Vehiculo(position = game.at(9, 6)) {
+//	override method image() = "auto3r.png"	
+//}
+//
+//object autoDerecha7 inherits Vehiculo(position = game.at(13, 6)) {
+//	override method image() = "auto1r.png"	
+//}
+//
+//object autoIzquierda1 inherits Vehiculo(position = game.at(0, 3)) {
+//	override method image() = "auto2l.png"	
+//}
+//
+//object autoIzquierda2 inherits Vehiculo(position = game.at(7, 3)) {
+//	override method image() = "auto3l.png"	
+//}
+//
+//object bondiIzquierda3 inherits Vehiculo(position = game.at(11, 3)) {
+//	override method image() = "bondi1l.png"	
+//}
+//
+//object autoIzquierda4 inherits Vehiculo(position = game.at(4, 5)) {
+//	override method image() = "auto2l.png"	
+//}
+//
+//object bondiIzquierda5 inherits Vehiculo(position = game.at(10, 5)) {
+//	override method image() = "bondi1l.png"	
+//}
+//
+//object autoIzquierda6 inherits Vehiculo(position = game.at(14, 7)) {
+//	override method image() = "auto2l.png"	
+//}
+//
+//object autoIzquierda7 inherits Vehiculo(position = game.at(5, 7)) {
+//	override method image() = "auto4l.png"	
+//}
 
 object vidas {
 	

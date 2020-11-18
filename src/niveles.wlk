@@ -5,32 +5,36 @@ import estudiante.*
 object objetosPrincipales {
 
 	method mostrar() {
-		game.addVisual(biciDerecha1)
-		game.addVisual(biciDerecha2)
-		game.addVisual(biciDerecha3)
-		game.addVisual(biciIzquierda1)
-		game.addVisual(biciIzquierda2)
-		game.addVisual(biciIzquierda3)
-		game.addVisual(vidas)
-
-		game.addVisual(autoDerecha1)
-		game.addVisual(autoDerecha2)
-		game.addVisual(autoDerecha3)
-		game.addVisual(bondiDerecha4)		
-		game.addVisual(bondiDerecha5)		
-		game.addVisual(autoDerecha6)
-		game.addVisual(autoDerecha7)
-		game.addVisual(autoIzquierda1)
-		game.addVisual(autoIzquierda2)
-		game.addVisual(bondiIzquierda3)
-		game.addVisual(autoIzquierda4)
-		game.addVisual(bondiIzquierda5)
-		game.addVisual(autoIzquierda6)
-		game.addVisual(autoIzquierda7)
 		
+		objetosMovimiento.generarBicis(9,2,"r",2)
+		
+//		game.addVisual(biciDerecha1)
+//		game.addVisual(biciDerecha2)
+//		game.addVisual(biciDerecha3)
+//		game.addVisual(biciIzquierda1)
+//		game.addVisual(biciIzquierda2)
+//		game.addVisual(biciIzquierda3)
+
+//
+//		game.addVisual(autoDerecha1)
+//		game.addVisual(autoDerecha2)
+//		game.addVisual(autoDerecha3)
+//		game.addVisual(bondiDerecha4)		
+//		game.addVisual(bondiDerecha5)		
+//		game.addVisual(autoDerecha6)
+//		game.addVisual(autoDerecha7)
+//		game.addVisual(autoIzquierda1)
+//		game.addVisual(autoIzquierda2)
+//		game.addVisual(bondiIzquierda3)
+//		game.addVisual(autoIzquierda4)
+//		game.addVisual(bondiIzquierda5)
+//		game.addVisual(autoIzquierda6)
+//		game.addVisual(autoIzquierda7)
+//		
+		game.addVisual(vidas)
 		game.addVisual(utn)
 		game.addVisual(picante)
-		game.addVisual(vidaExtra) // ahora la pongo acá pero podriamos ponerla recien en niveles dificiles
+		game.addVisual(vidaExtra) 
 		game.addVisual(estudiante)
 		game.addVisual(scoreIzq)
 		game.addVisual(scoreDer)
@@ -90,6 +94,7 @@ object niveles {
 		self.siguienteNivel()
 		self.primerNivel().iniciar() 
 		picante.subirNivelPicante()
+		
 	}
 
 }
@@ -106,49 +111,65 @@ object bienvenida{
 
 object objetosMovimiento {
 	
+		
+	
 	var property velocidadAuto = 1000
 	var property velocidadBici = 600
-	var property velocidadBondi = 1000
 	
+	method generarBicis(fila, cantidad, direccion, separacion){
+		const bicis = []
+		var posicion = game.at(0, fila)
+		const colorRandom = [1, 2, 3].anyOne().toString()
+		const sprite = "bici" + colorRandom + direccion + ".png"
+		cantidad.times({ _ =>
+			bicis.add(new Vehiculo(imagen = sprite, position = posicion))
+			posicion = posicion.right(separacion)
+		})
+		bicis.forEach({bici => 
+			game.addVisual(bici)
+			if (direccion == "r") game.onTick(velocidadBici, "bici moving", { => bici.avanzarDerecha()})
+			if (direccion == "l") game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})			
+			game.whenCollideDo(bici, {character => character.volverAlInicio()})
+		})
+	}
+
 	method comenzar() {
 
 //		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
 //		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
 		
-		game.onTick(velocidadBici, "biciDerecha1 moving", { => biciDerecha1.avanzarDerecha()})
-		game.onTick(velocidadBici, "biciDerecha2 moving", { => biciDerecha2.avanzarDerecha()})
-		game.onTick(velocidadBici, "biciDerecha3 moving", { => biciDerecha3.avanzarDerecha()})
-		game.onTick(velocidadBici, "biciIzquierda1 moving", { => biciIzquierda1.avanzarIzquierda()})
-		game.onTick(velocidadBici, "biciIzquierda2 moving", { => biciIzquierda2.avanzarIzquierda()})
-		game.onTick(velocidadBici, "biciIzquierda3 moving", { => biciIzquierda3.avanzarIzquierda()})
-		
-		game.onTick(velocidadAuto, "autoDerecha1 moving", { => autoDerecha1.avanzarDerecha()})
-		game.onTick(velocidadAuto, "autoDerecha2 moving", { => autoDerecha2.avanzarDerecha()})
-		game.onTick(velocidadAuto, "autoDerecha3 moving", { => autoDerecha3.avanzarDerecha()})
-		game.onTick(velocidadAuto, "bondiDerecha4 moving", { => bondiDerecha4.avanzarDerecha()})
-		game.onTick(velocidadAuto, "bondiDerecha5 moving", { => bondiDerecha5.avanzarDerecha()})
-		game.onTick(velocidadAuto, "autoDerecha6 moving", { => autoDerecha6.avanzarDerecha()})
-		game.onTick(velocidadAuto, "autoDerecha7 moving", { => autoDerecha7.avanzarDerecha()})
-		
-		game.onTick(velocidadAuto, "autoIzquierda1 moving", { => autoIzquierda1.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "autoIzquierda2 moving", { => autoIzquierda2.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "bondiIzquierda3", { => bondiIzquierda3.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "autoIzquierda4 moving", { => autoIzquierda4.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "bondiIzquierda5 moving", { => bondiIzquierda5.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "autoIzquierda6 moving", { => autoIzquierda6.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "autoIzquierda7", { => autoIzquierda7.avanzarIzquierda()})
+//		game.onTick(velocidadBici, "biciDerecha1 moving", { => biciDerecha1.avanzarDerecha()})
+//		game.onTick(velocidadBici, "biciDerecha2 moving", { => biciDerecha2.avanzarDerecha()})
+//		game.onTick(velocidadBici, "biciDerecha3 moving", { => biciDerecha3.avanzarDerecha()})
+//		game.onTick(velocidadBici, "biciIzquierda1 moving", { => biciIzquierda1.avanzarIzquierda()})
+//		game.onTick(velocidadBici, "biciIzquierda2 moving", { => biciIzquierda2.avanzarIzquierda()})
+//		game.onTick(velocidadBici, "biciIzquierda3 moving", { => biciIzquierda3.avanzarIzquierda()})
+//		
+//		game.onTick(velocidadAuto, "autoDerecha1 moving", { => autoDerecha1.avanzarDerecha()})
+//		game.onTick(velocidadAuto, "autoDerecha2 moving", { => autoDerecha2.avanzarDerecha()})
+//		game.onTick(velocidadAuto, "autoDerecha3 moving", { => autoDerecha3.avanzarDerecha()})
+//		game.onTick(velocidadAuto, "bondiDerecha4 moving", { => bondiDerecha4.avanzarDerecha()})
+//		game.onTick(velocidadAuto, "bondiDerecha5 moving", { => bondiDerecha5.avanzarDerecha()})
+//		game.onTick(velocidadAuto, "autoDerecha6 moving", { => autoDerecha6.avanzarDerecha()})
+//		game.onTick(velocidadAuto, "autoDerecha7 moving", { => autoDerecha7.avanzarDerecha()})
+//		
+//		game.onTick(velocidadAuto, "autoIzquierda1 moving", { => autoIzquierda1.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "autoIzquierda2 moving", { => autoIzquierda2.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "bondiIzquierda3", { => bondiIzquierda3.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "autoIzquierda4 moving", { => autoIzquierda4.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "bondiIzquierda5 moving", { => bondiIzquierda5.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "autoIzquierda6 moving", { => autoIzquierda6.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "autoIzquierda7", { => autoIzquierda7.avanzarIzquierda()})
 		
 	
 	}
 	method aumentarVelocidad() {
-		velocidadAuto = velocidadAuto - 20
-		velocidadBici = velocidadBici - 20
-		velocidadBondi = velocidadBondi - 20
+		velocidadAuto = velocidadAuto - 220
+		velocidadBici = velocidadBici - 220	
 	}
 	method aumentarVelocidadLento() {
-		velocidadAuto = velocidadAuto - 5
-		velocidadBici = velocidadBici - 5
-		velocidadBondi = velocidadBondi - 5
+		velocidadAuto = velocidadAuto - 225
+		velocidadBici = velocidadBici - 225
 	}
 }
 
@@ -211,30 +232,30 @@ object config {
 
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
 		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
-		game.whenCollideDo(biciDerecha1, { character => character.volverAlInicio()})
-		game.whenCollideDo(biciDerecha2, { character => character.volverAlInicio()})
-		game.whenCollideDo(biciDerecha3, { character => character.volverAlInicio()})
-		game.whenCollideDo(biciIzquierda1, { character => character.volverAlInicio()})
-		game.whenCollideDo(biciIzquierda2, { character => character.volverAlInicio()})
-		game.whenCollideDo(biciIzquierda3, { character => character.volverAlInicio()})
-		
-		game.whenCollideDo(autoDerecha1, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoDerecha2, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoDerecha3, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(bondiDerecha4, { character => character.chocadoPorBondi()})
-		game.whenCollideDo(bondiDerecha5, { character => character.chocadoPorBondi()})
-		game.whenCollideDo(autoDerecha6, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoDerecha7, { character => character.chocadoPorAuto()})
-		
-		game.whenCollideDo(autoIzquierda1, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoIzquierda2, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(bondiIzquierda3, { character => character.chocadoPorBondi()})
-		game.whenCollideDo(autoIzquierda4, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(bondiIzquierda5, { character => character.chocadoPorBondi()})
-		game.whenCollideDo(autoIzquierda6, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoIzquierda7, { character => character.chocadoPorAuto()})
-		
-		
+//		game.whenCollideDo(biciDerecha1, { character => character.volverAlInicio()})
+//		game.whenCollideDo(biciDerecha2, { character => character.volverAlInicio()})
+//		game.whenCollideDo(biciDerecha3, { character => character.volverAlInicio()})
+//		game.whenCollideDo(biciIzquierda1, { character => character.volverAlInicio()})
+//		game.whenCollideDo(biciIzquierda2, { character => character.volverAlInicio()})
+//		game.whenCollideDo(biciIzquierda3, { character => character.volverAlInicio()})
+//		
+//		game.whenCollideDo(autoDerecha1, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(autoDerecha2, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(autoDerecha3, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(bondiDerecha4, { character => character.chocadoPorBondi()})
+//		game.whenCollideDo(bondiDerecha5, { character => character.chocadoPorBondi()})
+//		game.whenCollideDo(autoDerecha6, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(autoDerecha7, { character => character.chocadoPorAuto()})
+//		
+//		game.whenCollideDo(autoIzquierda1, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(autoIzquierda2, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(bondiIzquierda3, { character => character.chocadoPorBondi()})
+//		game.whenCollideDo(autoIzquierda4, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(bondiIzquierda5, { character => character.chocadoPorBondi()})
+//		game.whenCollideDo(autoIzquierda6, { character => character.chocadoPorAuto()})
+//		game.whenCollideDo(autoIzquierda7, { character => character.chocadoPorAuto()})
+//		
+//		
 		
 	}
 
