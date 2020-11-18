@@ -6,7 +6,11 @@ object objetosPrincipales {
 
 	method mostrar() {
 		
-		objetosMovimiento.generarBicis(9,2,"r",2)
+		objetosMovimiento.generarBicis(9,2,"r",3)
+		objetosMovimiento.generarBicis(10,2,"l",5)
+		
+		objetosMovimiento.generarAutos(2,2,"r",5)
+		objetosMovimiento.generarAutos(3,1,"l",5)
 		
 //		game.addVisual(biciDerecha1)
 //		game.addVisual(biciDerecha2)
@@ -116,29 +120,57 @@ object objetosMovimiento {
 	var property velocidadAuto = 1000
 	var property velocidadBici = 600
 	const bicis = []
+	const autos = []
 	
 	method generarBicis(fila, cantidad, direccion, separacion){
-		
+		const nuevasBicis = []
 		var posicion = game.at(0, fila)
 		const colorRandom = [1, 2, 3].anyOne().toString()
 		const sprite = "bici" + colorRandom + direccion + ".png"
 		cantidad.times({ _ =>
-			bicis.add(new Vehiculo(imagen = sprite, position = posicion, sentido = direccion))
+			nuevasBicis.add(new Vehiculo(imagen = sprite, position = posicion, sentido = direccion))
 			posicion = posicion.right(separacion)
 		})
-		bicis.forEach({bici => 
+		nuevasBicis.forEach({bici => 
 			game.addVisual(bici)
 			if (direccion == "r") game.onTick(velocidadBici, "bici moving", { => bici.avanzarDerecha()})
 			if (direccion == "l") game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})			
 			game.whenCollideDo(bici, {character => character.volverAlInicio()})
+			bicis.add(bici)
 		})
 	}
+	
+		method generarAutos(fila, cantidad, direccion, separacion){
+		const nuevosAutos = []
+		var posicion = game.at(0, fila)
+		const colorRandom = [1, 2, 3, 5].anyOne().toString()
+		const sprite = "auto" + colorRandom + direccion + ".png"
+		cantidad.times({ _ =>
+			nuevosAutos.add(new Vehiculo(imagen = sprite, position = posicion, sentido = direccion))
+			posicion = posicion.right(separacion)
+		})
+		nuevosAutos.forEach({auto => 
+			game.addVisual(auto)
+			if (direccion == "r") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarDerecha()})
+			if (direccion == "l") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarIzquierda()})			
+			game.whenCollideDo(auto, { character => character.chocadoPorAuto()})
+			autos.add(auto)
+		})
+	}
+	
 
 	method comenzar() {
 		
+	//	game.removeTickEvent("bici moving")
 		bicis.forEach({bici => 
 			if (bici.sentido() == "r") game.onTick(velocidadBici, "bici moving", { => bici.avanzarDerecha()})
 			if (bici.sentido() == "l") game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})			
+			
+		})
+	//	game.removeTickEvent("auto moving")
+		autos.forEach({auto => 
+			if (auto.sentido() == "r") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarDerecha()})
+			if (auto.sentido() == "l") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarIzquierda()})			
 			
 		})
 		

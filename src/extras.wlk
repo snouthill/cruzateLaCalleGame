@@ -6,6 +6,7 @@ class Vehiculo {
 	var property imagen
 	var property position
 	var property sentido
+	
 	method image() = imagen
 	method esAtravesable() = true
 	method comerVida(){}
