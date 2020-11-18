@@ -9,8 +9,8 @@ object estudiante {
 	var property position = game.at(7,1)
 	var property image = orientacion.imagenDelPersonaje()
 	var property puntaje = 0
-	const fraseRandom = ["Dale que llego tarde :(", "Corre forest correee", "Kachow"]
-	const fraseChoque = ["F", "Una pierna rota, se cursa igual", "Aprende a manejar pibe", "Venia pisteando como un campeon..."]
+	const fraseRandom = ["Dale que llego tarde :(", "Corre forest correee", "Kachow", "Velocidad es mi segundo nombre", "Esaaaa"]
+	const fraseChoque = ["F", "Una pierna rota, se cursa igual", "Aprende a manejar pibe", "No pasa na, me cubre el seguro"]
 	
 	method hablar(frase){
 		game.say(self, frase.anyOne().toString())

@@ -5,9 +5,6 @@ import estudiante.*
 object objetosPrincipales {
 
 	method mostrar() {
-		game.addVisual(auto)
-		game.addVisual(autoDoble1)
-		game.addVisual(autoDoble2)
 		game.addVisual(biciDerecha1)
 		game.addVisual(biciDerecha2)
 		game.addVisual(biciDerecha3)
@@ -15,8 +12,22 @@ object objetosPrincipales {
 		game.addVisual(biciIzquierda2)
 		game.addVisual(biciIzquierda3)
 		game.addVisual(vidas)
-		game.addVisual(bondi)
-		game.addVisual(bondi2)
+
+		game.addVisual(autoDerecha1)
+		game.addVisual(autoDerecha2)
+		game.addVisual(autoDerecha3)
+		game.addVisual(bondiDerecha4)		
+		game.addVisual(bondiDerecha5)		
+		game.addVisual(autoDerecha6)
+		game.addVisual(autoDerecha7)
+		game.addVisual(autoIzquierda1)
+		game.addVisual(autoIzquierda2)
+		game.addVisual(bondiIzquierda3)
+		game.addVisual(autoIzquierda4)
+		game.addVisual(bondiIzquierda5)
+		game.addVisual(autoIzquierda6)
+		game.addVisual(autoIzquierda7)
+		
 		game.addVisual(utn)
 		game.addVisual(picante)
 		game.addVisual(vidaExtra) // ahora la pongo acá pero podriamos ponerla recien en niveles dificiles
@@ -96,22 +107,39 @@ object bienvenida{
 
 object objetosMovimiento {
 	
-	var property velocidadAuto = 900
-	var property velocidadBici = 500
-	var property velocidadBondi = 900
+	var property velocidadAuto = 1000
+	var property velocidadBici = 600
+	var property velocidadBondi = 1000
 	
 	method comenzar() {
-		game.onTick(velocidadAuto, "car moving", { => auto.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
-		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
+
+//		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
+//		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
+		
 		game.onTick(velocidadBici, "biciDerecha1 moving", { => biciDerecha1.avanzarDerecha()})
 		game.onTick(velocidadBici, "biciDerecha2 moving", { => biciDerecha2.avanzarDerecha()})
 		game.onTick(velocidadBici, "biciDerecha3 moving", { => biciDerecha3.avanzarDerecha()})
 		game.onTick(velocidadBici, "biciIzquierda1 moving", { => biciIzquierda1.avanzarIzquierda()})
 		game.onTick(velocidadBici, "biciIzquierda2 moving", { => biciIzquierda2.avanzarIzquierda()})
 		game.onTick(velocidadBici, "biciIzquierda3 moving", { => biciIzquierda3.avanzarIzquierda()})
-		game.onTick(velocidadBondi, "bondi moving", { => bondi.avanzarDerecha()})	
-		game.onTick(velocidadBondi, "bondi moving", { => bondi2.avanzarDerecha()})	
+		
+		game.onTick(velocidadAuto, "autoDerecha1 moving", { => autoDerecha1.avanzarDerecha()})
+		game.onTick(velocidadAuto, "autoDerecha2 moving", { => autoDerecha2.avanzarDerecha()})
+		game.onTick(velocidadAuto, "autoDerecha3 moving", { => autoDerecha3.avanzarDerecha()})
+		game.onTick(velocidadAuto, "bondiDerecha4 moving", { => bondiDerecha4.avanzarDerecha()})
+		game.onTick(velocidadAuto, "bondiDerecha5 moving", { => bondiDerecha5.avanzarDerecha()})
+		game.onTick(velocidadAuto, "autoDerecha6 moving", { => autoDerecha6.avanzarDerecha()})
+		game.onTick(velocidadAuto, "autoDerecha7 moving", { => autoDerecha7.avanzarDerecha()})
+		
+		game.onTick(velocidadAuto, "autoIzquierda1 moving", { => autoIzquierda1.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "autoIzquierda2 moving", { => autoIzquierda2.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "bondiIzquierda3", { => bondiIzquierda3.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "autoIzquierda4 moving", { => autoIzquierda4.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "bondiIzquierda5 moving", { => bondiIzquierda5.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "autoIzquierda6 moving", { => autoIzquierda6.avanzarIzquierda()})
+		game.onTick(velocidadAuto, "autoIzquierda7", { => autoIzquierda7.avanzarIzquierda()})
+		
+	
 	}
 	method aumentarVelocidad() {
 		velocidadAuto = velocidadAuto - 20
@@ -154,7 +182,7 @@ object nivel3 {
 	method iniciar() {
 		objetosMovimiento.aumentarVelocidad()
 		objetosMovimiento.comenzar()
-		bondi2.position(game.at(8,5)) 
+
 	}
 
 }
@@ -181,16 +209,34 @@ object nivel5 {
 object config {
 
 	method configurarColisiones() {
-		game.whenCollideDo(auto, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoDoble1, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(autoDoble2, { character => character.chocadoPorAuto()})
-		game.whenCollideDo(bondi, { character => character.chocadoPorBondi()})
-		game.whenCollideDo(bondi2, { character => character.chocadoPorBondi()})
+
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
 		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
 		game.whenCollideDo(biciDerecha1, { character => character.volverAlInicio()})
 		game.whenCollideDo(biciDerecha2, { character => character.volverAlInicio()})
 		game.whenCollideDo(biciDerecha3, { character => character.volverAlInicio()})
+		game.whenCollideDo(biciIzquierda1, { character => character.volverAlInicio()})
+		game.whenCollideDo(biciIzquierda2, { character => character.volverAlInicio()})
+		game.whenCollideDo(biciIzquierda3, { character => character.volverAlInicio()})
+		
+		game.whenCollideDo(autoDerecha1, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoDerecha2, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoDerecha3, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(bondiDerecha4, { character => character.chocadoPorBondi()})
+		game.whenCollideDo(bondiDerecha5, { character => character.chocadoPorBondi()})
+		game.whenCollideDo(autoDerecha6, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoDerecha7, { character => character.chocadoPorAuto()})
+		
+		game.whenCollideDo(autoIzquierda1, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoIzquierda2, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(bondiIzquierda3, { character => character.chocadoPorBondi()})
+		game.whenCollideDo(autoIzquierda4, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(bondiIzquierda5, { character => character.chocadoPorBondi()})
+		game.whenCollideDo(autoIzquierda6, { character => character.chocadoPorAuto()})
+		game.whenCollideDo(autoIzquierda7, { character => character.chocadoPorAuto()})
+		
+		
+		
 	}
 
 	method configurarTeclado() {
