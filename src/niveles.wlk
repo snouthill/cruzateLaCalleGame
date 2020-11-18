@@ -94,7 +94,6 @@ object niveles {
 
 }
 
-
 object musica inherits Sound(file = "bgmusic.mp3"){}
 object musicaEnding inherits Sound(file = "endmusic.mp3"){}
 
