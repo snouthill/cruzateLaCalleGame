@@ -1,8 +1,5 @@
-<div align="center"><img src=“https://i.imgur.com/KhuzFvX.png”></div>
+<div align="center">![readme](readme.png)
 
-
-
-<div align="center">
  
  ### Integrante 1
 - `Diego Agostino (snouthill)`
@@ -10,8 +7,5 @@
 ### Integrante 2
 - `Celeste Fernandez Challen (celeslvp)`
 
+![image](image.png)
 </div>
-
-
-
-<div align="center"><img src=“https://i.imgur.com/jj8zM3T.png”></div>
