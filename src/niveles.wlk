@@ -11,6 +11,7 @@ object objetosPrincipales {
 		game.addVisual(bici)
 		game.addVisual(vidas)
 		game.addVisual(bondi)
+		game.addVisual(bondi2)
 		game.addVisual(utn)
 		game.addVisual(picante)
 		game.addVisual(vidaExtra) // ahora la pongo acá pero podriamos ponerla recien en niveles dificiles
@@ -100,6 +101,7 @@ object objetosMovimiento {
 		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
 		game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})
 		game.onTick(velocidadBondi, "bondi moving", { => bondi.avanzarDerecha()})	
+		game.onTick(velocidadBondi, "bondi moving", { => bondi2.avanzarDerecha()})	
 	}
 	method aumentarVelocidad() {
 		velocidadAuto = velocidadAuto - 70
@@ -137,6 +139,7 @@ object nivel3 {
 	method iniciar() {
 		objetosMovimiento.aumentarVelocidad()
 		objetosMovimiento.comenzar()
+		bondi2.position(game.at(8,5)) 
 	}
 
 }
@@ -146,6 +149,7 @@ object nivel4 {
 	method iniciar() {
 		objetosMovimiento.aumentarVelocidad()
 		objetosMovimiento.comenzar()
+		//aca podemos agregar otro vehiculo
 	}
 
 }
@@ -153,7 +157,6 @@ object nivel4 {
 object nivel5 {
 	
 	method iniciar() {
-		objetosMovimiento.aumentarVelocidad()
 		objetosMovimiento.comenzar()
 	}
 	
@@ -166,6 +169,7 @@ object config {
 		game.whenCollideDo(autoDoble1, { character => character.chocadoPorAuto()})
 		game.whenCollideDo(autoDoble2, { character => character.chocadoPorAuto()})
 		game.whenCollideDo(bondi, { character => character.chocadoPorBondi()})
+		game.whenCollideDo(bondi2, { character => character.chocadoPorBondi()})
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
 		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
 		game.whenCollideDo(bici, { character => character.volverAlInicio()})

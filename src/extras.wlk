@@ -51,6 +51,11 @@ object bondi inherits Vehiculo(position = game.at(3,6)) {
 	override method image() = "bondiAdelante.png"
 }
 
+object bondi2 inherits Vehiculo(position = game.at(20,20)) {
+	
+	override method image() = "bondiAdelante.png"
+}
+
 object vidas {
 	
 	var property position = game.at(12,17)
