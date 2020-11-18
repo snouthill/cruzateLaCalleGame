@@ -91,9 +91,9 @@ object bienvenida{
 
 object objetosMovimiento {
 	
-	var property velocidadAuto = 500
-	var property velocidadBici = 400
-	var property velocidadBondi = 700
+	var property velocidadAuto = 400
+	var property velocidadBici = 500
+	var property velocidadBondi = 400
 	
 	method comenzar() {
 		game.onTick(velocidadAuto, "car moving", { => auto.avanzarIzquierda()})
