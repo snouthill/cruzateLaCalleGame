@@ -120,7 +120,7 @@ object objetosMovimiento {
 		method generarAutos(fila, columna, cantidad, direccion, separacion){
 		const nuevosAutos = []
 		var posicion = game.at(columna, fila)
-		const colorRandom = [1, 2, 3, 5].anyOne().toString()
+		const colorRandom = [1, 2, 3, 4, 5].anyOne().toString()
 		const sprite = "auto" + colorRandom + direccion + ".png"
 		cantidad.times({ _ =>
 			nuevosAutos.add(new Vehiculo(imagen = sprite, position = posicion, sentido = direccion))
