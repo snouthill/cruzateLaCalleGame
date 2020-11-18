@@ -57,7 +57,7 @@ object objetosPrincipales {
 
 object niveles {
 
-	var property listaNiveles = [ nivel1, nivelIntermedio, nivelIntermedio, nivelIntermedio, nivel5 ]
+	var property listaNiveles = [ nivelInicial, nivelIntermedio, nivelIntermedio, nivelIntermedio, nivelFinal ]
 
 	method iniciar() {
 		self.primerNivel().iniciar()
@@ -88,7 +88,7 @@ object musicaEnding inherits Sound(file = "endmusic.mp3"){}
 object bienvenida{
 	method iniciar(){
 	game.addVisual(inicio)
-	keyboard.space().onPressDo{nivel1.iniciar()}
+	keyboard.space().onPressDo{nivelInicial.iniciar()}
 		}
 	}
 
@@ -158,7 +158,7 @@ object objetosMovimiento {
 	}
 }
 
-object nivel1 {
+object nivelInicial {
 
 	method iniciar() {
 		musica.play()
@@ -179,27 +179,7 @@ object nivelIntermedio {
 	}
 }
 
-object nivel3 {
-
-	method iniciar() {
-		objetosMovimiento.aumentarVelocidad()
-		objetosMovimiento.comenzar()
-
-	}
-
-}
-
-object nivel4 {
-
-	method iniciar() {
-		objetosMovimiento.aumentarVelocidad()
-		objetosMovimiento.comenzar()
-		//aca podemos agregar otro vehiculo
-	}
-
-}
-
-object nivel5 {
+object nivelFinal {
 	
 	method iniciar() {
 		objetosMovimiento.aumentarVelocidadLento()
