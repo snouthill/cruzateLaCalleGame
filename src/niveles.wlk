@@ -115,14 +115,15 @@ object objetosMovimiento {
 	
 	var property velocidadAuto = 1000
 	var property velocidadBici = 600
+	const bicis = []
 	
 	method generarBicis(fila, cantidad, direccion, separacion){
-		const bicis = []
+		
 		var posicion = game.at(0, fila)
 		const colorRandom = [1, 2, 3].anyOne().toString()
 		const sprite = "bici" + colorRandom + direccion + ".png"
 		cantidad.times({ _ =>
-			bicis.add(new Vehiculo(imagen = sprite, position = posicion))
+			bicis.add(new Vehiculo(imagen = sprite, position = posicion, sentido = direccion))
 			posicion = posicion.right(separacion)
 		})
 		bicis.forEach({bici => 
@@ -134,7 +135,13 @@ object objetosMovimiento {
 	}
 
 	method comenzar() {
-
+		
+		bicis.forEach({bici => 
+			if (bici.sentido() == "r") game.onTick(velocidadBici, "bici moving", { => bici.avanzarDerecha()})
+			if (bici.sentido() == "l") game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})			
+			
+		})
+		
 //		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
 //		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
 		
