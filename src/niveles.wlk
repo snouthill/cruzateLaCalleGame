@@ -57,7 +57,7 @@ object objetosPrincipales {
 
 object niveles {
 
-	var property listaNiveles = [ nivel1, nivel2, nivel3, nivel4, nivel5 ]
+	var property listaNiveles = [ nivel1, nivelIntermedio, nivelIntermedio, nivelIntermedio, nivel5 ]
 
 	method iniciar() {
 		self.primerNivel().iniciar()
@@ -171,7 +171,7 @@ object nivel1 {
 	}
 }
 
-object nivel2 {
+object nivelIntermedio {
 
 	method iniciar() {
 		objetosMovimiento.aumentarVelocidad()
