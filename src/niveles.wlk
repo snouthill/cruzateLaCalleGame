@@ -6,35 +6,16 @@ object objetosPrincipales {
 
 	method mostrar() {
 		
-		objetosMovimiento.generarBicis(9,2,"r",3)
-		objetosMovimiento.generarBicis(10,2,"l",5)
+		objetosMovimiento.generarAutos(2,0,2,"r",5)
+		objetosMovimiento.generarAutos(3,8,1,"l",5)
+		objetosMovimiento.generarAutos(4,4,1,"r",5)
+		objetosMovimiento.generarAutos(5,4,1,"l",9)
+		objetosMovimiento.generarAutos(6,7,1,"r",9)
+		objetosMovimiento.generarAutos(7,11,2,"l",9)
 		
-		objetosMovimiento.generarAutos(2,2,"r",5)
-		objetosMovimiento.generarAutos(3,1,"l",5)
-		
-//		game.addVisual(biciDerecha1)
-//		game.addVisual(biciDerecha2)
-//		game.addVisual(biciDerecha3)
-//		game.addVisual(biciIzquierda1)
-//		game.addVisual(biciIzquierda2)
-//		game.addVisual(biciIzquierda3)
+		objetosMovimiento.generarBicis(9,0,2,"r",3)
+		objetosMovimiento.generarBicis(10,3,2,"l",5)
 
-//
-//		game.addVisual(autoDerecha1)
-//		game.addVisual(autoDerecha2)
-//		game.addVisual(autoDerecha3)
-//		game.addVisual(bondiDerecha4)		
-//		game.addVisual(bondiDerecha5)		
-//		game.addVisual(autoDerecha6)
-//		game.addVisual(autoDerecha7)
-//		game.addVisual(autoIzquierda1)
-//		game.addVisual(autoIzquierda2)
-//		game.addVisual(bondiIzquierda3)
-//		game.addVisual(autoIzquierda4)
-//		game.addVisual(bondiIzquierda5)
-//		game.addVisual(autoIzquierda6)
-//		game.addVisual(autoIzquierda7)
-//		
 		game.addVisual(vidas)
 		game.addVisual(utn)
 		game.addVisual(picante)
@@ -43,8 +24,6 @@ object objetosPrincipales {
 		game.addVisual(scoreIzq)
 		game.addVisual(scoreDer)
 		self.generarMuros()
-		
-		
 		
 		config.configurarColisiones()
 	}
@@ -115,16 +94,14 @@ object bienvenida{
 
 object objetosMovimiento {
 	
-		
-	
 	var property velocidadAuto = 1000
-	var property velocidadBici = 600
+	var property velocidadBici = 800
 	const bicis = []
 	const autos = []
 	
-	method generarBicis(fila, cantidad, direccion, separacion){
+	method generarBicis(fila, columna, cantidad, direccion, separacion){
 		const nuevasBicis = []
-		var posicion = game.at(0, fila)
+		var posicion = game.at(columna, fila)
 		const colorRandom = [1, 2, 3].anyOne().toString()
 		const sprite = "bici" + colorRandom + direccion + ".png"
 		cantidad.times({ _ =>
@@ -140,9 +117,9 @@ object objetosMovimiento {
 		})
 	}
 	
-		method generarAutos(fila, cantidad, direccion, separacion){
+		method generarAutos(fila, columna, cantidad, direccion, separacion){
 		const nuevosAutos = []
-		var posicion = game.at(0, fila)
+		var posicion = game.at(columna, fila)
 		const colorRandom = [1, 2, 3, 5].anyOne().toString()
 		const sprite = "auto" + colorRandom + direccion + ".png"
 		cantidad.times({ _ =>
@@ -161,54 +138,23 @@ object objetosMovimiento {
 
 	method comenzar() {
 		
-	//	game.removeTickEvent("bici moving")
 		bicis.forEach({bici => 
 			if (bici.sentido() == "r") game.onTick(velocidadBici, "bici moving", { => bici.avanzarDerecha()})
 			if (bici.sentido() == "l") game.onTick(velocidadBici, "bici moving", { => bici.avanzarIzquierda()})			
-			
 		})
-	//	game.removeTickEvent("auto moving")
+		
 		autos.forEach({auto => 
 			if (auto.sentido() == "r") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarDerecha()})
-			if (auto.sentido() == "l") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarIzquierda()})			
-			
+			if (auto.sentido() == "l") game.onTick(velocidadAuto, "auto moving", { => auto.avanzarIzquierda()})	
 		})
-		
-//		game.onTick(velocidadAuto, "car moving", { => autoDoble1.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "car moving", { => autoDoble2.avanzarIzquierda()})
-		
-//		game.onTick(velocidadBici, "biciDerecha1 moving", { => biciDerecha1.avanzarDerecha()})
-//		game.onTick(velocidadBici, "biciDerecha2 moving", { => biciDerecha2.avanzarDerecha()})
-//		game.onTick(velocidadBici, "biciDerecha3 moving", { => biciDerecha3.avanzarDerecha()})
-//		game.onTick(velocidadBici, "biciIzquierda1 moving", { => biciIzquierda1.avanzarIzquierda()})
-//		game.onTick(velocidadBici, "biciIzquierda2 moving", { => biciIzquierda2.avanzarIzquierda()})
-//		game.onTick(velocidadBici, "biciIzquierda3 moving", { => biciIzquierda3.avanzarIzquierda()})
-//		
-//		game.onTick(velocidadAuto, "autoDerecha1 moving", { => autoDerecha1.avanzarDerecha()})
-//		game.onTick(velocidadAuto, "autoDerecha2 moving", { => autoDerecha2.avanzarDerecha()})
-//		game.onTick(velocidadAuto, "autoDerecha3 moving", { => autoDerecha3.avanzarDerecha()})
-//		game.onTick(velocidadAuto, "bondiDerecha4 moving", { => bondiDerecha4.avanzarDerecha()})
-//		game.onTick(velocidadAuto, "bondiDerecha5 moving", { => bondiDerecha5.avanzarDerecha()})
-//		game.onTick(velocidadAuto, "autoDerecha6 moving", { => autoDerecha6.avanzarDerecha()})
-//		game.onTick(velocidadAuto, "autoDerecha7 moving", { => autoDerecha7.avanzarDerecha()})
-//		
-//		game.onTick(velocidadAuto, "autoIzquierda1 moving", { => autoIzquierda1.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "autoIzquierda2 moving", { => autoIzquierda2.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "bondiIzquierda3", { => bondiIzquierda3.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "autoIzquierda4 moving", { => autoIzquierda4.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "bondiIzquierda5 moving", { => bondiIzquierda5.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "autoIzquierda6 moving", { => autoIzquierda6.avanzarIzquierda()})
-//		game.onTick(velocidadAuto, "autoIzquierda7", { => autoIzquierda7.avanzarIzquierda()})
-		
-	
 	}
 	method aumentarVelocidad() {
-		velocidadAuto = velocidadAuto - 220
-		velocidadBici = velocidadBici - 220	
+		velocidadAuto = velocidadAuto - 20
+		velocidadBici = velocidadBici - 20	
 	}
 	method aumentarVelocidadLento() {
-		velocidadAuto = velocidadAuto - 225
-		velocidadBici = velocidadBici - 225
+		velocidadAuto = velocidadAuto - 5
+		velocidadBici = velocidadBici - 5
 	}
 }
 
@@ -223,17 +169,14 @@ object nivel1 {
 		game.onTick(10000, "mostrarVidaExtra", { => vidaExtra.spawn()})
 		game.say(estudiante, "Dale que llego tarde a cursar :(")
 	}
-
 }
 
 object nivel2 {
 
 	method iniciar() {
 		objetosMovimiento.aumentarVelocidad()
-		objetosMovimiento.comenzar()
-		
+		objetosMovimiento.comenzar()		
 	}
-
 }
 
 object nivel3 {
@@ -271,31 +214,6 @@ object config {
 
 		game.whenCollideDo(utn, { character => character.pasarDeNivel()})
 		game.whenCollideDo(vidaExtra, { character => character.comerVida()})
-//		game.whenCollideDo(biciDerecha1, { character => character.volverAlInicio()})
-//		game.whenCollideDo(biciDerecha2, { character => character.volverAlInicio()})
-//		game.whenCollideDo(biciDerecha3, { character => character.volverAlInicio()})
-//		game.whenCollideDo(biciIzquierda1, { character => character.volverAlInicio()})
-//		game.whenCollideDo(biciIzquierda2, { character => character.volverAlInicio()})
-//		game.whenCollideDo(biciIzquierda3, { character => character.volverAlInicio()})
-//		
-//		game.whenCollideDo(autoDerecha1, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(autoDerecha2, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(autoDerecha3, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(bondiDerecha4, { character => character.chocadoPorBondi()})
-//		game.whenCollideDo(bondiDerecha5, { character => character.chocadoPorBondi()})
-//		game.whenCollideDo(autoDerecha6, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(autoDerecha7, { character => character.chocadoPorAuto()})
-//		
-//		game.whenCollideDo(autoIzquierda1, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(autoIzquierda2, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(bondiIzquierda3, { character => character.chocadoPorBondi()})
-//		game.whenCollideDo(autoIzquierda4, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(bondiIzquierda5, { character => character.chocadoPorBondi()})
-//		game.whenCollideDo(autoIzquierda6, { character => character.chocadoPorAuto()})
-//		game.whenCollideDo(autoIzquierda7, { character => character.chocadoPorAuto()})
-//		
-//		
-		
 	}
 
 	method configurarTeclado() {
@@ -314,8 +232,7 @@ object config {
 		game.addVisual(final)
 		scoreIzq.scoreFinal()
 		scoreDer.scoreFinal()
-		keyboard.f().onPressDo{game.stop()}
-			
+		keyboard.f().onPressDo{game.stop()}			
 	}
 }
 

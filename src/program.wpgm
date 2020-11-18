@@ -16,7 +16,5 @@ program cruzarGame{
 	bienvenida.iniciar()
 	
 	game.start()
-	
 
-	
 }
